@@ -36,7 +36,7 @@ MOSS‑TTS Family is an open‑source **speech and sound generation model family
 ## Demo
 
 <div align="center">
-  <video src="https://speech-demo.oss-cn-shanghai.aliyuncs.com/moss_tts_demo/tts_readme_demo/tts_promotional_video.mp4" width="70%" poster=""> </video>
+  <video src="https://gist.github.com/user-attachments/assets/fdce9f66-20ec-45e8-9615-89606ae2fbe8" width="70%" poster=""> </video>
 </div>
 
 ## Contents
@@ -290,6 +290,9 @@ We evaluate MOSS‑TTSD-v1.0 using three objective metrics: Speaker Switch Accur
 #### Subjective Evaluation
 For open-source models, annotators are asked to score each sample pair in terms of speaker attribution accuracy, voice similarity, prosody, and overall quality. Following the methodology of the LMSYS Chatbot Arena, we compute Elo ratings and confidence intervals for each dimension.
 ![alt text](assets/VS_Open-Source_Models.jpg)
+
+For closed-source models, annotators are only asked to choose the overall preferred one in each pair, and we compute the win rate accordingly.
+![alt text](assets/VS_Proprietary_Models.png)
 
 For closed-source models, annotators are only asked to choose the overall preferred one in each pair, and we compute the win rate accordingly.
 ![alt text](assets/VS_Proprietary_Models.png)
