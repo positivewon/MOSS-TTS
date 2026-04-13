@@ -32,6 +32,7 @@
 MOSS‑TTS Family is an open‑source **speech and sound generation model family** from [MOSI.AI](https://mosi.cn/#hero) and the [OpenMOSS team](https://www.open-moss.com/). It is designed for **high‑fidelity**, **high‑expressiveness**, and **complex real‑world scenarios**, covering stable long‑form speech, multi‑speaker dialogue, voice/character design, environmental sound effects, and real‑time streaming TTS.
 
 ## News
+* 2026.4.13: 🚀 MOSS-TTS-Nano, our ~100M-parameter model, is now available! It supports multilingual voice cloning, 48 kHz stereo input/output, and streaming output on just 4 CPU cores. Check the [GitHub repository](https://github.com/OpenMOSS/MOSS-TTS-Nano) and our [blog](https://openmoss.github.io/MOSS-TTS-Nano-Demo/) for more details.
 * 2026.3.31: 📄 Our technical reports for [MOSS-TTSD](https://arxiv.org/pdf/2603.19739) and [MOSS-VoiceGenerator](https://arxiv.org/pdf/2603.28086) are now available on arXiv!
 * 2026.3.26: 📘 Added a tutorial on fine-tuning the MOSS-TTS-Realtime!
 * 2026.3.20: 📄 Our [technical report](https://arxiv.org/pdf/2603.18090) is now available on arXiv!
@@ -69,6 +70,9 @@ MOSS‑TTS Family is an open‑source **speech and sound generation model family
   - [MOSS-TTS](#moss-tts-seed-tts-eval)
   - [MOSS-TTSD](#moss-ttsd-subjective--ttsd-eval)
   - [MOSS-VoiceGenerator](#moss-voicegenerator-subjective)
+- [MOSS-TTS-Nano](#moss-tts-nano)
+  - [Introduction](#moss-tts-nano-introduction)
+  - [Model Weights](#moss-tts-nano-model-weights)
 - [MOSS-Audio-Tokenizer](#moss-audio-tokenizer)
   - [Introduction](#mat-intro)
   - [Model Weights](#model-weights)
@@ -588,6 +592,36 @@ Note: SDPA + torch.compile were enabled during testing. The following results ar
 We deployed Qwen3.5-9B using vLLM to measure $T_{\text{LLM-first-sentence}}$. The time required to generate 12 tokens (the TTS prefill length) was 197 ms.
 
 $T_{\text{LLM-first-sentence}} + T_{\text{MOSS-TTS-Realtime-TTFB}} = 197ms + 180ms = 377ms$
+
+<a id="moss-tts-nano"></a>
+## MOSS-TTS-Nano
+
+<a id="moss-tts-nano-introduction"></a>
+### Introduction
+
+**MOSS-TTS-Nano** is our lightweight TTS model designed for CPU-first realtime deployment. It focuses on the part of speech generation that matters most in practical products: a small footprint, low-latency streaming generation, and voice-cloning quality that is strong enough for local demos, web services, and lightweight production integration. Built on a pure autoregressive **Audio Tokenizer + LLM** pipeline, it keeps the deployment stack simple while making realtime speech generation accessible even without a GPU.
+
+Its main features include:
+
+- **0.1B parameters**: a compact model size that keeps memory usage and deployment cost low, making local deployment and lightweight serving much easier.
+- **Realtime generation on just 4 CPU cores**: streaming speech generation can run efficiently on CPU-only environments, which is practical for local applications and cost-sensitive deployment scenarios.
+- **Multilingual voice cloning**: supports multilingual voice cloning workflows, making it suitable for cross-language synthesis with a single reference speaker.
+- **48 kHz stereo input/output**: natively supports high-quality stereo audio, improving both reference-audio fidelity and final listening quality.
+
+To learn more about setup, advanced usage, and evaluation metrics, please visit the [MOSS-TTS-Nano repository](https://github.com/OpenMOSS/MOSS-TTS-Nano).
+
+<div align="center">
+  <img src="assets/arch_moss_tts_nano.png" alt="MOSS TTS Nano architecture" width="80%" />
+</div>
+
+<p align="center">Architecture of MOSS-TTS-Nano</p>
+
+<a id="moss-tts-nano-model-weights"></a>
+### Model Weights
+
+| Model | Hugging Face | ModelScope |
+|:-----:|:------------:|:----------:|
+| **MOSS-TTS-Nano** | [![Hugging Face](https://img.shields.io/badge/Huggingface-Model-orange?logo=huggingface)](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Nano) | [![ModelScope](https://img.shields.io/badge/ModelScope-Model-lightgrey?logo=modelscope)](https://modelscope.cn/models/openmoss/MOSS-TTS-Nano) |
 
 
 ## MOSS-Audio-Tokenizer
